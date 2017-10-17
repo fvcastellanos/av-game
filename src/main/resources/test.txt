@@ -1,0 +1,27 @@
+historia "El astronauta perdido"
+	introduccion "La noche antes de su regreso a la tierra es astronauta James Holden despierta subitamente al escuchar el sonido de las alarmas de la estacion espacial"
+	epilogo "Aunque aliviado James Holden ve tristemente en el cielo como todo el trabajo de su vida caia convertido en una llamarada"
+	
+	capitulos [
+		capitulo "El molesto sonido de las alarmas"
+		introduccion "Mientras se despierta, James Holden intenta entender que es lo que ha pasado"
+		objetos [
+			objeto "Manual de operaciones" con descripcion "Manual de operaciones de la estacion, util para cualquier emergencia"
+			objeto "Camara de Fotos" con descripcion "Camara de fotos profesional Nikon, bastante elegante"
+			objeto "Terminal" con descripcion "La terminal nos permite acceder a la computadora de la estacion"
+		]
+		
+		objetivos [
+			objetivo "Apagar las alarmas" descripcion "El sonido de las alarmas es muy molesto y no deja pensar"
+			eventos [
+				evento "Buscar el motivo de la alarma" descripcion "Es necesario determinar el por que suenan las alarmas"
+				pistas [
+					pista "Desde la terminal se puede acceder a la computadora de la estacion"
+				]
+				acciones [
+					accion "consultar la terminal" sobre el objeto "Terminal"
+				]
+			]
+		]
+		
+	]
