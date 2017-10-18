@@ -1,0 +1,59 @@
+{
+    "titulo" : "El astronauta perdido",
+    "introduccion" : "la noche antes de su regreso a la tierra els astronauta James Holden despierta subitamente al escuchar el sonido de las alarmas de la estacion espacial",
+    "epilogo" : "aunque aliviado James Holden ve tristemente en el cielo como todo el trabajo de su vida caia convertido en una llamarada",
+    "capitulos" : [
+        {
+            "nombre" : "el molesto sonido de las alarmas",
+            "introduccion" : "Mientras se despierta, James Holden intenta entender que es lo que ha pasado",
+            "objetos" : [
+                {
+                    "nombre" : "manual de operaciones",
+                    "descripcion" : "manual de operaciones de la estacion, util para cualquier emergencia",
+                    "portable" : true
+                }
+            ],
+            "objetivos" : [
+                {
+                    "nombre" : "apagar las alarmas",
+                    "completado" : false,
+                    "descripcion" : "el sonido de las alarmas es muy fuerte y molesto, no deja concentrarse",
+                    "eventos" : [
+                        {
+                            "nombre" : "es necesario buscar el motivo de la alarma",
+                            "pista" : "desde una terminal se podria consultar el estado de la computadora central",
+                            "acciones" : [
+                                {
+                                    "nombre" : "consultar terminal",
+                                    "resultado" : "en la pantalla de la terminal se observa: | CAPSULAS: OK | OXIGENO: 45% | INCENDIO EN LABORATORIO C-41 |",
+                                    "agregar_inventario" : false
+                                }
+                            ]
+                        },
+                        {
+                            "nombre" : "busqueda del laboratorio c-41 ",
+                            "pista" : "hay que buscar la mejor ruta para el laboratorio c-41",
+                            "acciones" : [
+                                {
+                                    "nombre" : "consultar el manual de operaciones",
+                                    "objeto" : "manual de operaciones",
+                                    "precondicion" : "no se puede consultar el manual si aun no lo tienes",
+                                    "resultado" : "en la pantalla de la terminal se observa: | CAPSULAS: OK | OXIGENO: 45% | INCENDIO EN SALA 2 DETECTADO |",
+                                    "agregar_inventario" : false
+                                },
+                                {
+                                    "nombre" : "tomar el manual",
+                                    "objeto" : "manual de operaciones",
+                                    "precondicion" : "no se puede consultar el manual si aun no lo tienes",
+                                    "resultado" : "en la pantalla de la terminal se observa: | CAPSULAS: OK | OXIGENO: 45% | INCENDIO EN SALA 2 DETECTADO |",
+                                    "agregar_inventario" : false
+                                }
+                            ]
+                        }
+                        
+                    ]
+                }
+            ]
+        }
+    ]
+}
