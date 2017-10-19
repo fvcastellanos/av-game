@@ -10,31 +10,37 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>org.antlr</groupId>
-            <artifactId>antlr4-runtime</artifactId>
-            <version>4.7</version>
-            <scope>compile</scope>
-        </dependency>
+<!--         <dependency> -->
+<!--             <groupId>org.antlr</groupId> -->
+<!--             <artifactId>antlr4-runtime</artifactId> -->
+<!--             <version>4.7</version> -->
+<!--             <scope>compile</scope> -->
+<!--         </dependency> -->
+
+		<dependency>
+			<groupId></groupId>
+			<artifactId>Gson</artifactId>
+			<version></version>
+		</dependency>
 
     </dependencies>
 
     <build>
         <defaultGoal>install</defaultGoal>
         <plugins>
-            <plugin>
-                <groupId>org.antlr</groupId>
-                <artifactId>antlr4-maven-plugin</artifactId>
-                <version>4.7</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>antlr4</goal>
-                        </goals>
-                    </execution>
-                </executions>
+<!--             <plugin> -->
+<!--                 <groupId>org.antlr</groupId> -->
+<!--                 <artifactId>antlr4-maven-plugin</artifactId> -->
+<!--                 <version>4.7</version> -->
+<!--                 <executions> -->
+<!--                     <execution> -->
+<!--                         <goals> -->
+<!--                             <goal>antlr4</goal> -->
+<!--                         </goals> -->
+<!--                     </execution> -->
+<!--                 </executions> -->
 
-            </plugin>
+<!--             </plugin> -->
 
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

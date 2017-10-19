@@ -35,9 +35,12 @@
                             "pista" : "hay que buscar la mejor ruta para el laboratorio c-41",
                             "acciones" : [
                                 {
-                                    "nombre" : "consultar el manual de operaciones",
+                                    "nombre" : "consultar manual de operaciones",
                                     "objeto" : "manual de operaciones",
-                                    "precondicion" : "no se puede consultar el manual si aun no lo tienes",
+                                    "precondicion" : {
+                                        "accion" : "tomar el manual",
+                                        "mensaje" : "no se puede consultar el manual si aun no lo tienes"
+                                    },
                                     "resultado" : "en la pantalla de la terminal se observa: | CAPSULAS: OK | OXIGENO: 45% | INCENDIO EN SALA 2 DETECTADO |",
                                     "agregar_inventario" : false
                                 },
