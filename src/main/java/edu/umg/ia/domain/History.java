@@ -1,9 +1,12 @@
 package edu.umg.ia.domain;
 
+import java.util.List;
+
 public class History {
     private String title;
     private String intro;
     private String epilogue;
+    private List<Chapter> chapters;
 
     public String getTitle() {
         return title;
@@ -27,5 +30,13 @@ public class History {
 
     public void setEpilogue(String epilogue) {
         this.epilogue = epilogue;
+    }
+
+    public List<Chapter> getChapters() {
+        return chapters;
+    }
+
+    public void setChapters(List<Chapter> chapters) {
+        this.chapters = chapters;
     }
 }
