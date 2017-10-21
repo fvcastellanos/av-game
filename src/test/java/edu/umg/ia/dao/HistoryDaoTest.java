@@ -1,5 +1,6 @@
 package edu.umg.ia.dao;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -12,6 +13,7 @@ import org.junit.Test;
 
 import edu.umg.ia.domain.Chapter;
 import edu.umg.ia.domain.History;
+import edu.umg.ia.domain.Thing;
 
 public class HistoryDaoTest {
 
@@ -48,10 +50,37 @@ public class HistoryDaoTest {
     	
     	assertTrue(chapterHolder.isPresent());
     	
+    	Chapter chapter = chapterHolder.get();
+    	assertEquals(chapter.getName(), chapterName);
+    }
+    
+    @Test
+    public void testWhenGettingThingsForExistingChapterReturnList() {
+    	String chapterName = "el molesto sonido de las alarmas";
+    	History history = loadHistory();
+    	
+    	List<Thing> things = historyDao.getThingsForChapter(history, chapterName);
+
+    	assertNotNull(things);
+    	assertFalse(things.isEmpty());    	
+    }
+    
+    @Test
+    public void testWhenGettingThingsForUnexistingChapterReturnEmptyList() {
+    	String chapterName = "test-chapter";
+    	History history = loadHistory();
+    	
+    	List<Thing> things = historyDao.getThingsForChapter(history, chapterName);
+
+    	assertNotNull(things);
+    	assertTrue(things.isEmpty());    	
+    	
     }
     
     private History loadHistory() {
         Optional<History> historyHolder = historyDao.loadHistory("astronauta.json");
         return historyHolder.get();    	
     }
+    
+    
 }
