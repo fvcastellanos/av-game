@@ -70,4 +70,13 @@ public class HistoryDao {
     			.orElse(Collections.emptyList());
     }
 
+    public Optional<Chapter> getFirstChapter(History history) {
+        if (history == null) {
+            return Optional.empty();
+        }
+
+        return history.getChapters().stream()
+                .filter(Chapter::isStart)
+                .findFirst();
+    }
 }

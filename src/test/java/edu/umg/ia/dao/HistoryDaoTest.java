@@ -74,7 +74,6 @@ public class HistoryDaoTest {
 
     	assertNotNull(things);
     	assertTrue(things.isEmpty());    	
-    	
     }
     
     private History loadHistory() {
