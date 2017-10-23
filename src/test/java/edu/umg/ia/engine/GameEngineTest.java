@@ -18,7 +18,7 @@ public class GameEngineTest {
     @Before
     public void setup() {
         historyDao = new HistoryDao();
-        gameEngine = new GameEngine("astronauta", historyDao);
+        gameEngine = new GameEngine("astronauta", historyDao, new ThingInventory());
     }
 
     @Test

@@ -20,10 +20,12 @@ public class GameEngine {
 	private History history;
 	private HistoryDao historyDao;
 	private GameState gameState;
+	private ThingInventory inventory;
 	
-	public GameEngine(String historyName, HistoryDao historyDao) {
+	public GameEngine(String historyName, HistoryDao historyDao, ThingInventory inventory) {
 		this.historyFile = historyName + ".json";
 		this.historyDao = historyDao;
+		this.inventory = inventory;
 	}
 	
 	public String startGame() {
