@@ -3,6 +3,8 @@ package edu.umg.ia.command;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class CommandParserTest {
     private CommandParser parser;
 
@@ -13,9 +15,12 @@ public class CommandParserTest {
 
     @Test
     public void testCommandParse() {
-        parser.parse("iniciar el juego");
-        parser.parse("comdenzar juego");
+        String result = parser.parse("iniciar el juego");
 
-        assert true;
+        assertEquals("iniciar juego", result);
+
+        result = parser.parse("comdenzar juego");
+
+        assertEquals("lo siento, no entiendo...", result);
     }
 }
