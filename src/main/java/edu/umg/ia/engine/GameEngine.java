@@ -1,10 +1,10 @@
 package edu.umg.ia.engine;
 
 import com.google.common.collect.Maps;
-import edu.umg.ia.dao.HistoryDao;
-import edu.umg.ia.domain.Chapter;
-import edu.umg.ia.domain.GameStatus;
-import edu.umg.ia.domain.History;
+import edu.umg.ia.engine.dao.HistoryDao;
+import edu.umg.ia.engine.domain.Chapter;
+import edu.umg.ia.engine.domain.GameStatus;
+import edu.umg.ia.engine.domain.History;
 import io.vavr.Tuple;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

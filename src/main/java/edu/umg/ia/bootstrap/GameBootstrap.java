@@ -1,7 +1,7 @@
 package edu.umg.ia.bootstrap;
 
 import edu.umg.ia.command.CommandProcessor;
-import edu.umg.ia.dao.HistoryDao;
+import edu.umg.ia.engine.dao.HistoryDao;
 import edu.umg.ia.engine.GameEngine;
 import edu.umg.ia.engine.ThingInventory;
 import org.slf4j.Logger;

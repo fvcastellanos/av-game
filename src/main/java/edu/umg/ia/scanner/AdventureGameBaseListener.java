@@ -16,49 +16,157 @@ public class AdventureGameBaseListener implements AdventureGameListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIniciarJuego(AdventureGameParser.IniciarJuegoContext ctx) { }
+	@Override public void enterStartGame(AdventureGameParser.StartGameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIniciarJuego(AdventureGameParser.IniciarJuegoContext ctx) { }
+	@Override public void exitStartGame(AdventureGameParser.StartGameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDondeEstoy(AdventureGameParser.DondeEstoyContext ctx) { }
+	@Override public void enterClue(AdventureGameParser.ClueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDondeEstoy(AdventureGameParser.DondeEstoyContext ctx) { }
+	@Override public void exitClue(AdventureGameParser.ClueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterComandos(AdventureGameParser.ComandosContext ctx) { }
+	@Override public void enterWhereAmI(AdventureGameParser.WhereAmIContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitComandos(AdventureGameParser.ComandosContext ctx) { }
+	@Override public void exitWhereAmI(AdventureGameParser.WhereAmIContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterComando(AdventureGameParser.ComandoContext ctx) { }
+	@Override public void enterGetInstructions(AdventureGameParser.GetInstructionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitComando(AdventureGameParser.ComandoContext ctx) { }
+	@Override public void exitGetInstructions(AdventureGameParser.GetInstructionsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterViewInventory(AdventureGameParser.ViewInventoryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitViewInventory(AdventureGameParser.ViewInventoryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTakeItem(AdventureGameParser.TakeItemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTakeItem(AdventureGameParser.TakeItemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterViewItem(AdventureGameParser.ViewItemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitViewItem(AdventureGameParser.ViewItemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpenItem(AdventureGameParser.OpenItemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpenItem(AdventureGameParser.OpenItemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCloseItem(AdventureGameParser.CloseItemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCloseItem(AdventureGameParser.CloseItemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWriteItem(AdventureGameParser.WriteItemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWriteItem(AdventureGameParser.WriteItemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterUse(AdventureGameParser.UseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitUse(AdventureGameParser.UseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCommands(AdventureGameParser.CommandsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCommands(AdventureGameParser.CommandsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCommand(AdventureGameParser.CommandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCommand(AdventureGameParser.CommandContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

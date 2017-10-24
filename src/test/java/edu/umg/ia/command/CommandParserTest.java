@@ -14,13 +14,18 @@ public class CommandParserTest {
     }
 
     @Test
-    public void testCommandParse() {
+    public void testStartGameParse() {
         String result = parser.parse("iniciar el juego");
+        assertEquals(CommandEnum.START_GAME.getText(), result);
 
-        assertEquals("iniciar juego", result);
+        result = parser.parse("comenzar juego");
+        assertEquals(CommandEnum.START_GAME.getText(), result);
+    }
 
-        result = parser.parse("comdenzar juego");
+    @Test
+    public void testUseItemParse() {
+        String result = parser.parse("utilizar llave en la puerta");
+//        assertEquals(CommandEnum.START_GAME.getText(), result);
 
-        assertEquals("lo siento, no entiendo...", result);
     }
 }

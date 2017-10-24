@@ -1,4 +1,4 @@
-package edu.umg.ia.domain;
+package edu.umg.ia.engine.domain;
 
 public enum GameStatus {
     STARTED,

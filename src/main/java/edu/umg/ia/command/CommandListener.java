@@ -2,7 +2,6 @@ package edu.umg.ia.command;
 
 import edu.umg.ia.scanner.AdventureGameBaseListener;
 import edu.umg.ia.scanner.AdventureGameParser;
-import io.vavr.control.Validation;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,39 +9,28 @@ import org.slf4j.LoggerFactory;
 public class CommandListener extends AdventureGameBaseListener {
 
     private Logger logger = LoggerFactory.getLogger(CommandListener.class);
-    private Validation<String, String> commandValidation;
+
+    CommandEnum result;
 
     @Override
-    public void enterComando(AdventureGameParser.ComandoContext ctx) {
+    public void exitStartGame(AdventureGameParser.StartGameContext ctx) {
+        logger.info("start game: {}", ctx.getText());
+        result = CommandEnum.START_GAME;
     }
 
     @Override
-    public void exitComandos(AdventureGameParser.ComandosContext ctx) {
-        logger.info("comando: {}", ctx.getText());
-    }
-
-    @Override
-    public void exitIniciarJuego(AdventureGameParser.IniciarJuegoContext ctx) {
-        logger.info("iniciar juego -> {}", ctx.getText());
-        commandValidation = valid("iniciar juego");
+    public void exitUse(AdventureGameParser.UseContext ctx) {
+        logger.info("use: {}", ctx.getText());
+        result = CommandEnum.USE;
     }
 
     @Override
     public void visitErrorNode(ErrorNode node) {
-        logger.error("algo no anda bien: {}", node.toStringTree());
-        commandValidation = invalid("lo siento, no entiendo...");
+        logger.error("something happened: {}", node.toStringTree());
+        result = CommandEnum.ERROR;
     }
 
-    public Validation<String, String> getCommandValidation() {
-        return commandValidation;
-    }
-
-
-    private Validation<String, String> valid(String text) {
-        return Validation.valid(text);
-    }
-
-    private Validation<String, String> invalid(String text) {
-        return Validation.invalid(text);
+    public CommandEnum getResult() {
+        return result;
     }
 }

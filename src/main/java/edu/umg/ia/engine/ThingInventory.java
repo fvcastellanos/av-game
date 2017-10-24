@@ -1,8 +1,8 @@
 package edu.umg.ia.engine;
 
 import com.google.common.collect.Maps;
-import edu.umg.ia.domain.InventoryItem;
-import edu.umg.ia.domain.Thing;
+import edu.umg.ia.engine.domain.InventoryItem;
+import edu.umg.ia.engine.domain.Thing;
 
 import java.util.Map;
 import java.util.Optional;

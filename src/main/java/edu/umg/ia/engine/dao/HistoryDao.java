@@ -1,13 +1,13 @@
-package edu.umg.ia.dao;
+package edu.umg.ia.engine.dao;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import edu.umg.ia.domain.Chapter;
-import edu.umg.ia.domain.History;
-import edu.umg.ia.domain.Objective;
-import edu.umg.ia.domain.Thing;
+import edu.umg.ia.engine.domain.Chapter;
+import edu.umg.ia.engine.domain.History;
+import edu.umg.ia.engine.domain.Objective;
+import edu.umg.ia.engine.domain.Thing;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

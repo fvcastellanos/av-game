@@ -1,4 +1,4 @@
-package edu.umg.ia.dao;
+package edu.umg.ia.engine.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -11,9 +11,9 @@ import java.util.Optional;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.umg.ia.domain.Chapter;
-import edu.umg.ia.domain.History;
-import edu.umg.ia.domain.Thing;
+import edu.umg.ia.engine.domain.Chapter;
+import edu.umg.ia.engine.domain.History;
+import edu.umg.ia.engine.domain.Thing;
 
 public class HistoryDaoTest {
 

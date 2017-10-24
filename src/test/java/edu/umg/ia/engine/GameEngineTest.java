@@ -1,8 +1,8 @@
 package edu.umg.ia.engine;
 
-import edu.umg.ia.dao.HistoryDao;
-import edu.umg.ia.domain.GameStatus;
-import edu.umg.ia.domain.History;
+import edu.umg.ia.engine.dao.HistoryDao;
+import edu.umg.ia.engine.domain.GameStatus;
+import edu.umg.ia.engine.domain.History;
 import org.junit.Before;
 import org.junit.Test;
 

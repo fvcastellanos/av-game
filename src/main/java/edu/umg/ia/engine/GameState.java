@@ -1,6 +1,6 @@
 package edu.umg.ia.engine;
 
-import edu.umg.ia.domain.Chapter;
+import edu.umg.ia.engine.domain.Chapter;
 import io.vavr.Tuple2;
 
 public class GameState {

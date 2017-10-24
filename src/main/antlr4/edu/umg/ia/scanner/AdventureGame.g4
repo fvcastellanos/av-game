@@ -1,21 +1,36 @@
 grammar AdventureGame;
 
-// Lexemas
+// Tokens
 WS : [ \r\n\t] + -> skip ;
-
 ID : [a-zA-Z] [a-zA-Z0-9]* ;
-TEXTO : '"' [a-zA-Z0-9!,.?; ] '"' ;
-//ARTICULO: 'la' | 'los' | 'las';
-// EL_ARTICULO : 'el';
 
-// Reglas
-iniciarJuego : ( 'iniciar' | 'comenzar' | 'empezar' ) ( 'el' )* 'juego' ;
+// Rules
+startGame : ( 'iniciar' | 'comenzar' | 'empezar' ) ( 'el' )* 'juego' ;
+clue : ('ayuda' | 'alguna pista' | 'no se que hacer') ;
 
-dondeEstoy: ( 'donde estoy' | 'que paso' | 'que hubo' );
+whereAmI : ( 'donde estoy' | 'que paso' | 'que hubo' );
+getInstructions : ( 'ver' | 'obtener' | 'repasar' | 'leer' ) ('las')* 'instrucciones' ;
+viewInventory : ( 'ver' | 'revisar' | 'consultar') ('el')* 'inventario' ;
 
-comandos :
-    iniciarJuego
-    | dondeEstoy
+takeItem : ( 'tomar' | 'agarrar' | 'recoger' ) ('el' | 'la' | 'los' | 'las' )* ID;
+viewItem : ( 'ver' | 'revisar' | 'observar' ) ('el' | 'la' | 'los' | 'las' )* ID;
+openItem : ( 'abrir' ) ('el' | 'la' | 'los' | 'las' )* ID;
+closeItem : ( 'cerrar' ) ('el' | 'la' | 'los' | 'las' )* ID;
+writeItem : ( 'ingresar' | 'escribir' ) ('el' | 'la' | 'los' | 'las' )* ID;
+
+use : ( 'usar' | 'utilizar' ) ('el' | 'la' | 'los' | 'las' )* ID ( 'en' ) ('el' | 'la' | 'los' | 'las' )* ID ;
+
+commands :
+    startGame
+    | whereAmI
+    | getInstructions
+    | viewInventory
+    | takeItem
+    | viewItem
+    | openItem
+    | closeItem
+    | writeItem
+    | use
     ;
 
-comando : comandos comando*;
+command : commands command* ;
