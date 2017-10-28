@@ -1,8 +1,9 @@
 package edu.umg.ia.command;
 
+import edu.umg.ia.command.domain.Command;
+import edu.umg.ia.command.domain.CommandEnum;
 import edu.umg.ia.scanner.AdventureGameLexer;
 import edu.umg.ia.scanner.AdventureGameParser;
-import io.vavr.control.Either;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -15,18 +16,13 @@ public class CommandParser {
 
     private Logger logger = LoggerFactory.getLogger(CommandParser.class);
 
-    public String parse(String command) {
+    public Command parse(String command) {
 
         CommandListener commandListener = syntaxAnalyzer(command);
-        CommandEnum result = commandListener.getResult();
-
-        if (result.equals(CommandEnum.ERROR)) {
-            logger.error("there is a syntax error: {}", result.getText());
-            return result.getText();
-        }
+        Command result = commandListener.getCommand();
 
         logger.info("command: {} accepted", command);
-        return result.getText();
+        return result;
     }
 
     private CommandListener syntaxAnalyzer(String command) {

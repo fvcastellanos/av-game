@@ -1,4 +1,4 @@
-package edu.umg.ia.command;
+package edu.umg.ia.command.domain;
 
 public enum CommandEnum {
     ERROR("Syntax validation error"),
