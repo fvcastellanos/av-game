@@ -1,19 +1,19 @@
 package edu.umg.ia.command.domain;
 
 public enum CommandEnum {
-    ERROR("Syntax validation error"),
+    ERROR,
 
-    START_GAME("iniciar juego"),
-    USE("usar item"),
-    WHERE_AM_I("donde estoy");
+    START_GAME,
+    WHERE_AM_I,
+    VIEW_INVENTORY,
+    GET_INSTRUCTIONS,
+    CLUE,
 
-    private String text;
-
-    CommandEnum(String text) {
-        this.text = text;
-    }
-
-    public String getText() {
-        return this.text;
-    }
+    USE,
+    TAKE,
+    VIEW,
+    OPEN,
+    WRITE,
+    CLOSE
+    ;
 }

@@ -39,6 +39,45 @@ public class CommandListener extends AdventureGameBaseListener {
     }
 
     @Override
+    public void exitClue(AdventureGameParser.ClueContext ctx) {
+        logger.info("get a clue: {}", ctx.getText());
+        command = CommandFactory.getAClue();
+    }
+
+    @Override
+    public void exitWhereAmI(AdventureGameParser.WhereAmIContext ctx) {
+        logger.info("where am I? {}", ctx.getText());
+        command = CommandFactory.whereAmI();
+    }
+
+    @Override
+    public void exitGetInstructions(AdventureGameParser.GetInstructionsContext ctx) {
+        logger.info("get instructions: {}", ctx.getText());
+        command = CommandFactory.getInstructions();
+    }
+
+    @Override
+    public void exitViewInventory(AdventureGameParser.ViewInventoryContext ctx) {
+        logger.info("view inventory: {}", ctx.getText());
+        command = CommandFactory.viewInventory();
+    }
+
+    @Override public void exitTakeItem(AdventureGameParser.TakeItemContext ctx) {
+        String item = identifierStack.pop();
+        logger.info("take item: {}", item);
+        command = CommandFactory.takeItem(item);
+    }
+
+    @Override
+    public void exitViewItem(AdventureGameParser.ViewItemContext ctx) {
+
+    }
+
+    @Override public void exitOpenItem(AdventureGameParser.OpenItemContext ctx) { }
+    @Override public void exitCloseItem(AdventureGameParser.CloseItemContext ctx) { }
+    @Override public void exitWriteItem(AdventureGameParser.WriteItemContext ctx) { }
+
+    @Override
     public void visitErrorNode(ErrorNode node) {
         logger.error("something happened: {}", node.toStringTree());
         command = CommandFactory.error();
