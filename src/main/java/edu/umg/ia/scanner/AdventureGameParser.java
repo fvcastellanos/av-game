@@ -21,7 +21,7 @@ public class AdventureGameParser extends Parser {
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
 		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
-		T__31=32, T__32=33, WS=34, ID=35;
+		T__31=32, T__32=33, T__33=34, WS=35, ID=36;
 	public static final int
 		RULE_startGame = 0, RULE_clue = 1, RULE_whereAmI = 2, RULE_getInstructions = 3, 
 		RULE_viewInventory = 4, RULE_takeItem = 5, RULE_viewItem = 6, RULE_openItem = 7, 
@@ -38,12 +38,13 @@ public class AdventureGameParser extends Parser {
 		"'que hubo'", "'ver'", "'obtener'", "'repasar'", "'leer'", "'las'", "'instrucciones'", 
 		"'revisar'", "'consultar'", "'inventario'", "'tomar'", "'agarrar'", "'recoger'", 
 		"'la'", "'los'", "'observar'", "'abrir'", "'cerrar'", "'ingresar'", "'escribir'", 
-		"'usar'", "'utilizar'", "'en'"
+		"'digitar'", "'en'", "'usar'", "'utilizar'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, null, null, null, null, "WS", "ID"
+		null, null, null, null, null, null, null, null, null, null, null, "WS", 
+		"ID"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -636,7 +637,10 @@ public class AdventureGameParser extends Parser {
 	}
 
 	public static class WriteItemContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(AdventureGameParser.ID, 0); }
+		public List<TerminalNode> ID() { return getTokens(AdventureGameParser.ID); }
+		public TerminalNode ID(int i) {
+			return getToken(AdventureGameParser.ID, i);
+		}
 		public WriteItemContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -660,7 +664,7 @@ public class AdventureGameParser extends Parser {
 			{
 			setState(93);
 			_la = _input.LA(1);
-			if ( !(_la==T__28 || _la==T__29) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__28) | (1L << T__29) | (1L << T__30))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -691,6 +695,32 @@ public class AdventureGameParser extends Parser {
 				_la = _input.LA(1);
 			}
 			setState(100);
+			match(ID);
+			setState(101);
+			match(T__31);
+			setState(105);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__15) | (1L << T__23) | (1L << T__24))) != 0)) {
+				{
+				{
+				setState(102);
+				_la = _input.LA(1);
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__15) | (1L << T__23) | (1L << T__24))) != 0)) ) {
+				_errHandler.recoverInline(this);
+				}
+				else {
+					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+					_errHandler.reportMatch(this);
+					consume();
+				}
+				}
+				}
+				setState(107);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
+			setState(108);
 			match(ID);
 			}
 		}
@@ -731,43 +761,15 @@ public class AdventureGameParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(102);
+			setState(110);
 			_la = _input.LA(1);
-			if ( !(_la==T__30 || _la==T__31) ) {
+			if ( !(_la==T__32 || _la==T__33) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
 				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
 				_errHandler.reportMatch(this);
 				consume();
-			}
-			setState(106);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__15) | (1L << T__23) | (1L << T__24))) != 0)) {
-				{
-				{
-				setState(103);
-				_la = _input.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__15) | (1L << T__23) | (1L << T__24))) != 0)) ) {
-				_errHandler.recoverInline(this);
-				}
-				else {
-					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-					_errHandler.reportMatch(this);
-					consume();
-				}
-				}
-				}
-				setState(108);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			}
-			setState(109);
-			match(ID);
-			{
-			setState(110);
-			match(T__32);
 			}
 			setState(114);
 			_errHandler.sync(this);
@@ -792,6 +794,34 @@ public class AdventureGameParser extends Parser {
 				_la = _input.LA(1);
 			}
 			setState(117);
+			match(ID);
+			{
+			setState(118);
+			match(T__31);
+			}
+			setState(122);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__15) | (1L << T__23) | (1L << T__24))) != 0)) {
+				{
+				{
+				setState(119);
+				_la = _input.LA(1);
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__15) | (1L << T__23) | (1L << T__24))) != 0)) ) {
+				_errHandler.recoverInline(this);
+				}
+				else {
+					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+					_errHandler.reportMatch(this);
+					consume();
+				}
+				}
+				}
+				setState(124);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
+			setState(125);
 			match(ID);
 			}
 		}
@@ -837,6 +867,9 @@ public class AdventureGameParser extends Parser {
 		public UseContext use() {
 			return getRuleContext(UseContext.class,0);
 		}
+		public ClueContext clue() {
+			return getRuleContext(ClueContext.class,0);
+		}
 		public CommandsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -855,77 +888,84 @@ public class AdventureGameParser extends Parser {
 		CommandsContext _localctx = new CommandsContext(_ctx, getState());
 		enterRule(_localctx, 22, RULE_commands);
 		try {
-			setState(129);
+			setState(138);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(119);
+				setState(127);
 				startGame();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(120);
+				setState(128);
 				whereAmI();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(121);
+				setState(129);
 				getInstructions();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(122);
+				setState(130);
 				viewInventory();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(123);
+				setState(131);
 				takeItem();
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(124);
+				setState(132);
 				viewItem();
 				}
 				break;
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(125);
+				setState(133);
 				openItem();
 				}
 				break;
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(126);
+				setState(134);
 				closeItem();
 				}
 				break;
 			case 9:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(127);
+				setState(135);
 				writeItem();
 				}
 				break;
 			case 10:
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(128);
+				setState(136);
 				use();
+				}
+				break;
+			case 11:
+				enterOuterAlt(_localctx, 11);
+				{
+				setState(137);
+				clue();
 				}
 				break;
 			}
@@ -972,23 +1012,23 @@ public class AdventureGameParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(131);
+			setState(140);
 			commands();
-			setState(135);
+			setState(144);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,12,_ctx);
 			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(132);
+					setState(141);
 					command();
 					}
 					} 
 				}
-				setState(137);
+				setState(146);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,12,_ctx);
 			}
 			}
 		}
@@ -1004,45 +1044,49 @@ public class AdventureGameParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3%\u008d\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3&\u0096\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\3\2\3\2\7\2\37\n\2\f\2\16\2\"\13\2\3\2\3"+
 		"\2\3\3\3\3\3\4\3\4\3\5\3\5\7\5,\n\5\f\5\16\5/\13\5\3\5\3\5\3\6\3\6\7\6"+
 		"\65\n\6\f\6\16\68\13\6\3\6\3\6\3\7\3\7\7\7>\n\7\f\7\16\7A\13\7\3\7\3\7"+
 		"\3\b\3\b\7\bG\n\b\f\b\16\bJ\13\b\3\b\3\b\3\t\3\t\7\tP\n\t\f\t\16\tS\13"+
 		"\t\3\t\3\t\3\n\3\n\7\nY\n\n\f\n\16\n\\\13\n\3\n\3\n\3\13\3\13\7\13b\n"+
-		"\13\f\13\16\13e\13\13\3\13\3\13\3\f\3\f\7\fk\n\f\f\f\16\fn\13\f\3\f\3"+
-		"\f\3\f\7\fs\n\f\f\f\16\fv\13\f\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r"+
-		"\3\r\3\r\5\r\u0084\n\r\3\16\3\16\7\16\u0088\n\16\f\16\16\16\u008b\13\16"+
-		"\3\16\2\2\17\2\4\6\b\n\f\16\20\22\24\26\30\32\2\f\3\2\3\5\3\2\b\n\3\2"+
-		"\13\r\3\2\16\21\4\2\16\16\24\25\3\2\27\31\5\2\6\6\22\22\32\33\5\2\16\16"+
-		"\24\24\34\34\3\2\37 \3\2!\"\2\u0093\2\34\3\2\2\2\4%\3\2\2\2\6\'\3\2\2"+
-		"\2\b)\3\2\2\2\n\62\3\2\2\2\f;\3\2\2\2\16D\3\2\2\2\20M\3\2\2\2\22V\3\2"+
-		"\2\2\24_\3\2\2\2\26h\3\2\2\2\30\u0083\3\2\2\2\32\u0085\3\2\2\2\34 \t\2"+
-		"\2\2\35\37\7\6\2\2\36\35\3\2\2\2\37\"\3\2\2\2 \36\3\2\2\2 !\3\2\2\2!#"+
-		"\3\2\2\2\" \3\2\2\2#$\7\7\2\2$\3\3\2\2\2%&\t\3\2\2&\5\3\2\2\2\'(\t\4\2"+
-		"\2(\7\3\2\2\2)-\t\5\2\2*,\7\22\2\2+*\3\2\2\2,/\3\2\2\2-+\3\2\2\2-.\3\2"+
-		"\2\2.\60\3\2\2\2/-\3\2\2\2\60\61\7\23\2\2\61\t\3\2\2\2\62\66\t\6\2\2\63"+
-		"\65\7\6\2\2\64\63\3\2\2\2\658\3\2\2\2\66\64\3\2\2\2\66\67\3\2\2\2\679"+
-		"\3\2\2\28\66\3\2\2\29:\7\26\2\2:\13\3\2\2\2;?\t\7\2\2<>\t\b\2\2=<\3\2"+
-		"\2\2>A\3\2\2\2?=\3\2\2\2?@\3\2\2\2@B\3\2\2\2A?\3\2\2\2BC\7%\2\2C\r\3\2"+
-		"\2\2DH\t\t\2\2EG\t\b\2\2FE\3\2\2\2GJ\3\2\2\2HF\3\2\2\2HI\3\2\2\2IK\3\2"+
-		"\2\2JH\3\2\2\2KL\7%\2\2L\17\3\2\2\2MQ\7\35\2\2NP\t\b\2\2ON\3\2\2\2PS\3"+
-		"\2\2\2QO\3\2\2\2QR\3\2\2\2RT\3\2\2\2SQ\3\2\2\2TU\7%\2\2U\21\3\2\2\2VZ"+
-		"\7\36\2\2WY\t\b\2\2XW\3\2\2\2Y\\\3\2\2\2ZX\3\2\2\2Z[\3\2\2\2[]\3\2\2\2"+
-		"\\Z\3\2\2\2]^\7%\2\2^\23\3\2\2\2_c\t\n\2\2`b\t\b\2\2a`\3\2\2\2be\3\2\2"+
-		"\2ca\3\2\2\2cd\3\2\2\2df\3\2\2\2ec\3\2\2\2fg\7%\2\2g\25\3\2\2\2hl\t\13"+
-		"\2\2ik\t\b\2\2ji\3\2\2\2kn\3\2\2\2lj\3\2\2\2lm\3\2\2\2mo\3\2\2\2nl\3\2"+
-		"\2\2op\7%\2\2pt\7#\2\2qs\t\b\2\2rq\3\2\2\2sv\3\2\2\2tr\3\2\2\2tu\3\2\2"+
-		"\2uw\3\2\2\2vt\3\2\2\2wx\7%\2\2x\27\3\2\2\2y\u0084\5\2\2\2z\u0084\5\6"+
-		"\4\2{\u0084\5\b\5\2|\u0084\5\n\6\2}\u0084\5\f\7\2~\u0084\5\16\b\2\177"+
-		"\u0084\5\20\t\2\u0080\u0084\5\22\n\2\u0081\u0084\5\24\13\2\u0082\u0084"+
-		"\5\26\f\2\u0083y\3\2\2\2\u0083z\3\2\2\2\u0083{\3\2\2\2\u0083|\3\2\2\2"+
-		"\u0083}\3\2\2\2\u0083~\3\2\2\2\u0083\177\3\2\2\2\u0083\u0080\3\2\2\2\u0083"+
-		"\u0081\3\2\2\2\u0083\u0082\3\2\2\2\u0084\31\3\2\2\2\u0085\u0089\5\30\r"+
-		"\2\u0086\u0088\5\32\16\2\u0087\u0086\3\2\2\2\u0088\u008b\3\2\2\2\u0089"+
-		"\u0087\3\2\2\2\u0089\u008a\3\2\2\2\u008a\33\3\2\2\2\u008b\u0089\3\2\2"+
-		"\2\16 -\66?HQZclt\u0083\u0089";
+		"\13\f\13\16\13e\13\13\3\13\3\13\3\13\7\13j\n\13\f\13\16\13m\13\13\3\13"+
+		"\3\13\3\f\3\f\7\fs\n\f\f\f\16\fv\13\f\3\f\3\f\3\f\7\f{\n\f\f\f\16\f~\13"+
+		"\f\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\5\r\u008d\n\r\3"+
+		"\16\3\16\7\16\u0091\n\16\f\16\16\16\u0094\13\16\3\16\2\2\17\2\4\6\b\n"+
+		"\f\16\20\22\24\26\30\32\2\f\3\2\3\5\3\2\b\n\3\2\13\r\3\2\16\21\4\2\16"+
+		"\16\24\25\3\2\27\31\5\2\6\6\22\22\32\33\5\2\16\16\24\24\34\34\3\2\37!"+
+		"\3\2#$\2\u009e\2\34\3\2\2\2\4%\3\2\2\2\6\'\3\2\2\2\b)\3\2\2\2\n\62\3\2"+
+		"\2\2\f;\3\2\2\2\16D\3\2\2\2\20M\3\2\2\2\22V\3\2\2\2\24_\3\2\2\2\26p\3"+
+		"\2\2\2\30\u008c\3\2\2\2\32\u008e\3\2\2\2\34 \t\2\2\2\35\37\7\6\2\2\36"+
+		"\35\3\2\2\2\37\"\3\2\2\2 \36\3\2\2\2 !\3\2\2\2!#\3\2\2\2\" \3\2\2\2#$"+
+		"\7\7\2\2$\3\3\2\2\2%&\t\3\2\2&\5\3\2\2\2\'(\t\4\2\2(\7\3\2\2\2)-\t\5\2"+
+		"\2*,\7\22\2\2+*\3\2\2\2,/\3\2\2\2-+\3\2\2\2-.\3\2\2\2.\60\3\2\2\2/-\3"+
+		"\2\2\2\60\61\7\23\2\2\61\t\3\2\2\2\62\66\t\6\2\2\63\65\7\6\2\2\64\63\3"+
+		"\2\2\2\658\3\2\2\2\66\64\3\2\2\2\66\67\3\2\2\2\679\3\2\2\28\66\3\2\2\2"+
+		"9:\7\26\2\2:\13\3\2\2\2;?\t\7\2\2<>\t\b\2\2=<\3\2\2\2>A\3\2\2\2?=\3\2"+
+		"\2\2?@\3\2\2\2@B\3\2\2\2A?\3\2\2\2BC\7&\2\2C\r\3\2\2\2DH\t\t\2\2EG\t\b"+
+		"\2\2FE\3\2\2\2GJ\3\2\2\2HF\3\2\2\2HI\3\2\2\2IK\3\2\2\2JH\3\2\2\2KL\7&"+
+		"\2\2L\17\3\2\2\2MQ\7\35\2\2NP\t\b\2\2ON\3\2\2\2PS\3\2\2\2QO\3\2\2\2QR"+
+		"\3\2\2\2RT\3\2\2\2SQ\3\2\2\2TU\7&\2\2U\21\3\2\2\2VZ\7\36\2\2WY\t\b\2\2"+
+		"XW\3\2\2\2Y\\\3\2\2\2ZX\3\2\2\2Z[\3\2\2\2[]\3\2\2\2\\Z\3\2\2\2]^\7&\2"+
+		"\2^\23\3\2\2\2_c\t\n\2\2`b\t\b\2\2a`\3\2\2\2be\3\2\2\2ca\3\2\2\2cd\3\2"+
+		"\2\2df\3\2\2\2ec\3\2\2\2fg\7&\2\2gk\7\"\2\2hj\t\b\2\2ih\3\2\2\2jm\3\2"+
+		"\2\2ki\3\2\2\2kl\3\2\2\2ln\3\2\2\2mk\3\2\2\2no\7&\2\2o\25\3\2\2\2pt\t"+
+		"\13\2\2qs\t\b\2\2rq\3\2\2\2sv\3\2\2\2tr\3\2\2\2tu\3\2\2\2uw\3\2\2\2vt"+
+		"\3\2\2\2wx\7&\2\2x|\7\"\2\2y{\t\b\2\2zy\3\2\2\2{~\3\2\2\2|z\3\2\2\2|}"+
+		"\3\2\2\2}\177\3\2\2\2~|\3\2\2\2\177\u0080\7&\2\2\u0080\27\3\2\2\2\u0081"+
+		"\u008d\5\2\2\2\u0082\u008d\5\6\4\2\u0083\u008d\5\b\5\2\u0084\u008d\5\n"+
+		"\6\2\u0085\u008d\5\f\7\2\u0086\u008d\5\16\b\2\u0087\u008d\5\20\t\2\u0088"+
+		"\u008d\5\22\n\2\u0089\u008d\5\24\13\2\u008a\u008d\5\26\f\2\u008b\u008d"+
+		"\5\4\3\2\u008c\u0081\3\2\2\2\u008c\u0082\3\2\2\2\u008c\u0083\3\2\2\2\u008c"+
+		"\u0084\3\2\2\2\u008c\u0085\3\2\2\2\u008c\u0086\3\2\2\2\u008c\u0087\3\2"+
+		"\2\2\u008c\u0088\3\2\2\2\u008c\u0089\3\2\2\2\u008c\u008a\3\2\2\2\u008c"+
+		"\u008b\3\2\2\2\u008d\31\3\2\2\2\u008e\u0092\5\30\r\2\u008f\u0091\5\32"+
+		"\16\2\u0090\u008f\3\2\2\2\u0091\u0094\3\2\2\2\u0092\u0090\3\2\2\2\u0092"+
+		"\u0093\3\2\2\2\u0093\33\3\2\2\2\u0094\u0092\3\2\2\2\17 -\66?HQZckt|\u008c"+
+		"\u0092";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

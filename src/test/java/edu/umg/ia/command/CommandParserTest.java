@@ -31,4 +31,87 @@ public class CommandParserTest {
         assertEquals(result.getItem(), "llave");
         assertEquals(result.getToItem(), "puerta");
     }
+
+    @Test
+    public void testGetInstructions() {
+        Command result = parser.parse("repasar las instrucciones");
+        assertEquals(CommandEnum.GET_INSTRUCTIONS, result.getCommand());
+
+        result = parser.parse("leer instrucciones");
+        assertEquals(CommandEnum.GET_INSTRUCTIONS, result.getCommand());
+    }
+
+    @Test
+    public void testGetAClue() {
+        Command result = parser.parse("ayuda");
+        assertEquals(CommandEnum.CLUE, result.getCommand());
+
+        result = parser.parse("no se que hacer");
+        assertEquals(CommandEnum.CLUE, result.getCommand());
+    }
+
+    @Test
+    public void testViewInventary() {
+        Command result = parser.parse("consultar inventario");
+        assertEquals(CommandEnum.VIEW_INVENTORY, result.getCommand());
+
+        result = parser.parse("revisar el inventario");
+        assertEquals(CommandEnum.VIEW_INVENTORY, result.getCommand());
+    }
+
+    @Test
+    public void testTakeItem() {
+        Command result = parser.parse("tomar el lapicero");
+        assertEquals(CommandEnum.TAKE, result.getCommand());
+        assertEquals("lapicero", result.getItem());
+
+        result = parser.parse("recoger cuerda");
+        assertEquals(CommandEnum.TAKE, result.getCommand());
+        assertEquals("cuerda", result.getItem());
+    }
+
+    @Test
+    public void testViewItem() {
+        Command result = parser.parse("observar la ventana");
+        assertEquals(CommandEnum.VIEW, result.getCommand());
+        assertEquals("ventana", result.getItem());
+
+        result = parser.parse("ver terminal");
+        assertEquals(CommandEnum.VIEW, result.getCommand());
+        assertEquals("terminal", result.getItem());
+    }
+
+    @Test
+    public void testOpenItem() {
+        Command result = parser.parse("abrir la ventana");
+        assertEquals(CommandEnum.OPEN, result.getCommand());
+        assertEquals("ventana", result.getItem());
+
+        result = parser.parse("abrir la gaveta");
+        assertEquals(CommandEnum.OPEN, result.getCommand());
+        assertEquals("gaveta", result.getItem());
+    }
+
+    @Test
+    public void testCloseItem() {
+        Command result = parser.parse("cerrar ventana");
+        assertEquals(CommandEnum.OPEN, result.getCommand());
+        assertEquals("ventana", result.getItem());
+
+        result = parser.parse("cerrar la gaveta");
+        assertEquals(CommandEnum.OPEN, result.getCommand());
+        assertEquals("gaveta", result.getItem());
+    }
+
+    @Test
+    public void testWriteItem() {
+        Command result = parser.parse("ingresar el codigo");
+        assertEquals(CommandEnum.WRITE, result.getCommand());
+        assertEquals("codigo", result.getItem());
+
+        result = parser.parse("escribir la clave");
+        assertEquals(CommandEnum.WRITE, result.getCommand());
+        assertEquals("clave", result.getItem());
+    }
+
 }

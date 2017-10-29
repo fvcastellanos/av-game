@@ -62,8 +62,45 @@ public class CommandFactory {
     public static Command takeItem(String item) {
         return Command.newBuilder()
                 .command(CommandEnum.TAKE)
+                .item(item)
                 .toInventory(true)
                 .message("Tomando el objeto: " + item)
+                .build();
+    }
+
+    public static Command viewItem(String item) {
+        return Command.newBuilder()
+                .command(CommandEnum.VIEW)
+                .item(item)
+                .toInventory(false)
+                .message("Viendo el objeto: " + item)
+                .build();
+    }
+
+    public static Command openItem(String item) {
+        return Command.newBuilder()
+                .command(CommandEnum.OPEN)
+                .item(item)
+                .toInventory(false)
+                .message("Abriendo el objeto: " + item)
+                .build();
+    }
+
+    public static Command closeItem(String item) {
+        return Command.newBuilder()
+                .command(CommandEnum.CLOSE)
+                .item(item)
+                .toInventory(false)
+                .message("Cerrando el objeto: " + item)
+                .build();
+    }
+
+    public static Command writeItem(String item) {
+        return Command.newBuilder()
+                .command(CommandEnum.WRITE)
+                .item(item)
+                .toInventory(false)
+                .message("Escribiendo en el objeto: " + item)
                 .build();
     }
 }

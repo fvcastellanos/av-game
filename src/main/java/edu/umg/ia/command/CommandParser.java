@@ -26,17 +26,24 @@ public class CommandParser {
     }
 
     private CommandListener syntaxAnalyzer(String command) {
-        logger.info("verifying command: {}", command);
-        AdventureGameLexer lexer = new AdventureGameLexer(CharStreams.fromString(command));
         CommandListener commandListener = new CommandListener();
 
-        CommonTokenStream tokenStream = new CommonTokenStream(lexer);
-        AdventureGameParser gameParser = new AdventureGameParser(tokenStream);
-        AdventureGameParser.CommandsContext comandosContext = gameParser.commands();
-        ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk(commandListener, comandosContext);
+        try {
+            logger.info("verifying command: {}", command);
+            AdventureGameLexer lexer = new AdventureGameLexer(CharStreams.fromString(command));
 
-        logger.info("command {} verified", command);
+            CommonTokenStream tokenStream = new CommonTokenStream(lexer);
+            AdventureGameParser gameParser = new AdventureGameParser(tokenStream);
+            AdventureGameParser.CommandsContext commandsContext = gameParser.commands();
+            ParseTreeWalker walker = new ParseTreeWalker();
+            walker.walk(commandListener, commandsContext);
+
+            logger.info("command {} verified", command);
+
+        } catch (Exception ex) {
+            logger.error("something happended with the command: {} - {}", command, ex);
+
+        }
         return commandListener;
     }
 

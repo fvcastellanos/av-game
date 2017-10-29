@@ -2,7 +2,7 @@ grammar AdventureGame;
 
 // Tokens
 WS : [ \r\n\t] + -> skip ;
-ID : [a-zA-Z] [a-zA-Z0-9]* ;
+ID : ( [0-9]+ )* [a-zA-Z] [a-zA-Z0-9]* ;
 
 // Rules
 startGame : ( 'iniciar' | 'comenzar' | 'empezar' ) ( 'el' )* 'juego' ;
@@ -16,7 +16,7 @@ takeItem : ( 'tomar' | 'agarrar' | 'recoger' ) ('el' | 'la' | 'los' | 'las' )* I
 viewItem : ( 'ver' | 'revisar' | 'observar' ) ('el' | 'la' | 'los' | 'las' )* ID;
 openItem : ( 'abrir' ) ('el' | 'la' | 'los' | 'las' )* ID;
 closeItem : ( 'cerrar' ) ('el' | 'la' | 'los' | 'las' )* ID;
-writeItem : ( 'ingresar' | 'escribir' ) ('el' | 'la' | 'los' | 'las' )* ID;
+writeItem : ( 'ingresar' | 'escribir' | 'digitar' ) ('el' | 'la' | 'los' | 'las' )* ID 'en' ('el' | 'la' | 'los' | 'las' )* ID;
 
 use : ( 'usar' | 'utilizar' ) ('el' | 'la' | 'los' | 'las' )* ID ( 'en' ) ('el' | 'la' | 'los' | 'las' )* ID ;
 
@@ -31,6 +31,7 @@ commands :
     | closeItem
     | writeItem
     | use
+    | clue
     ;
 
 command : commands command* ;

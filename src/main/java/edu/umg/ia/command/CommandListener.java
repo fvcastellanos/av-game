@@ -70,12 +70,30 @@ public class CommandListener extends AdventureGameBaseListener {
 
     @Override
     public void exitViewItem(AdventureGameParser.ViewItemContext ctx) {
-
+        String item = identifierStack.pop();
+        logger.info("view item: {}", item);
+        command = CommandFactory.viewItem(item);
     }
 
-    @Override public void exitOpenItem(AdventureGameParser.OpenItemContext ctx) { }
-    @Override public void exitCloseItem(AdventureGameParser.CloseItemContext ctx) { }
-    @Override public void exitWriteItem(AdventureGameParser.WriteItemContext ctx) { }
+    @Override
+    public void exitOpenItem(AdventureGameParser.OpenItemContext ctx) {
+        String item = identifierStack.pop();
+        logger.info("open item: {}", item);
+        command = CommandFactory.openItem(item);
+    }
+    @Override
+    public void exitCloseItem(AdventureGameParser.CloseItemContext ctx) {
+        String item = identifierStack.pop();
+        logger.info("open item: {}", item);
+        command = CommandFactory.openItem(item);
+    }
+
+    @Override
+    public void exitWriteItem(AdventureGameParser.WriteItemContext ctx) {
+        String item = identifierStack.pop();
+        logger.info("write item: {}", item);
+        command = CommandFactory.writeItem(item);
+    }
 
     @Override
     public void visitErrorNode(ErrorNode node) {
