@@ -19,13 +19,32 @@ public class GameStateMachineIT {
 	private StateMachine<GameState, GameEvent> stateMachine;
 	
 	@Test
-	public void testStateMachine() {
+	public void testInitStateMachine() {
+
+	    stateMachine.start();
 
 		assertEquals(GameState.INIT, stateMachine.getState().getId());
 
 		stateMachine.sendEvent(GameEvent.GAME_STARTED);
 
 		assertEquals(GameState.INTRO, stateMachine.getState().getId());
+
+		stateMachine.stop();
 	}
+
+	@Test
+	public void testNotExpectedEventKeepsInSameState() {
+	    stateMachine.start();
+
+	    stateMachine.sendEvent(GameEvent.GAME_STARTED);
+        assertEquals(GameState.INTRO, stateMachine.getState().getId());
+
+        stateMachine.sendEvent(GameEvent.INIT_CHAPTER_I);
+        assertEquals(GameState.CHAPTER_ONE, stateMachine.getState().getId());
+
+        stateMachine.sendEvent(GameEvent.CHAPTER_II_GOAL_I_COMPLETED);
+        assertEquals(GameState.CHAPTER_ONE, stateMachine.getState().getId());
+
+    }
 		
 }
