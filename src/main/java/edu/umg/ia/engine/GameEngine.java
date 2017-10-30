@@ -1,17 +1,17 @@
 package edu.umg.ia.engine;
 
-import com.google.common.collect.Maps;
-import edu.umg.ia.engine.dao.HistoryDao;
-import edu.umg.ia.engine.domain.Chapter;
-import edu.umg.ia.engine.domain.GameStatus;
-import edu.umg.ia.engine.domain.History;
-import io.vavr.Tuple;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.collect.Maps;
+
+import edu.umg.ia.engine.dao.HistoryDao;
+import edu.umg.ia.engine.domain.Chapter;
+import edu.umg.ia.engine.domain.History;
 
 public class GameEngine {
 
@@ -19,7 +19,7 @@ public class GameEngine {
 	private String historyFile;
 	private History history;
 	private HistoryDao historyDao;
-	private GameState gameState;
+//	private GameState gameState;
 	private ThingInventory inventory;
 	
 	public GameEngine(String historyName, HistoryDao historyDao, ThingInventory inventory) {
@@ -29,7 +29,7 @@ public class GameEngine {
 	}
 	
 	public String startGame() {
-		logger.info("Starting game: {}", historyFile);
+/*		logger.info("Starting game: {}", historyFile);
 		Optional<History> historyHolder = historyDao.loadHistory(historyFile);
 		
 		if (!historyHolder.isPresent()) {
@@ -40,12 +40,12 @@ public class GameEngine {
 		history = historyHolder.get();
 		gameState = new GameState(loadFirstChapter(), Tuple.of(GameStatus.STARTED, "Game loaded"));
 		logger.info("History: {} loaded", history.getTitle());
-		return "Game loaded";
+*/		return "Game loaded";
 	}
 
-	public GameState getGameState() {
-	    return gameState;
-    }
+//	public GameState getGameState() {
+//	    return gameState;
+//    }
 
     public Map<String, String> getHistoryOverview() {
 	    if (history == null) {

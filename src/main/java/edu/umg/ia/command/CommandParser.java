@@ -46,17 +46,4 @@ public class CommandParser {
         }
         return commandListener;
     }
-
-    private String listToString(List<String> stringList) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("[ ");
-        stringList.stream()
-                .forEach(string -> {
-                    stringBuilder.append(string).append(", ");
-                });
-
-        stringBuilder.append(" ]");
-
-        return stringBuilder.toString();
-    }
 }
