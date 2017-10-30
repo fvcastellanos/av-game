@@ -15,7 +15,12 @@ public class GameStateListener extends StateMachineListenerAdapter<GameState, Ga
 	@Override
 	public void stateChanged(State<GameState, GameEvent> from, State<GameState, GameEvent> to) {
 		// TODO Auto-generated method stub
-		logger.info("State change from: {} to: {}", from.getId(), to.getId());
+
+		String fromString = from==null?"[No state]":from.getId().toString();
+		String toString = to==null?"[No state]":to.getId().toString();
+
+
+		logger.info("State change from: {} to: {}", fromString, toString);
 	}
 
 }

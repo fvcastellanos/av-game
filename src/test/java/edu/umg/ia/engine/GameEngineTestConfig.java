@@ -1,11 +1,11 @@
 package edu.umg.ia.engine;
 
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Import;
-
 import edu.umg.ia.config.CommandConfig;
 import edu.umg.ia.config.StateMachineConfig;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
+@Configuration
 @Import({
 	CommandConfig.class,
 	StateMachineConfig.class

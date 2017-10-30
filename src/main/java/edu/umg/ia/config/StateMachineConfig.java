@@ -1,7 +1,9 @@
 package edu.umg.ia.config;
 
-import java.util.EnumSet;
-
+import edu.umg.ia.engine.GameStateListener;
+import edu.umg.ia.engine.domain.GameEvent;
+import edu.umg.ia.engine.domain.GameState;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.config.EnableStateMachine;
@@ -11,21 +13,20 @@ import org.springframework.statemachine.config.builders.StateMachineStateConfigu
 import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
 import org.springframework.statemachine.listener.StateMachineListener;
 
-import edu.umg.ia.engine.GameStateListener;
-import edu.umg.ia.engine.domain.GameEvent;
-import edu.umg.ia.engine.domain.GameState;
+import java.util.EnumSet;
 
 @Configuration
 @EnableStateMachine
 public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<GameState, GameEvent> {
 
+    @Autowired
+    private StateMachineListener stateMachineListener;
+
     @Override
     public void configure(StateMachineConfigurationConfigurer<GameState, GameEvent> config) throws Exception {
         config.withConfiguration()
         	.autoStartup(true)
-            .listener(listener());
-        
-        System.out.println("state machine configured");
+            .listener(stateMachineListener);
     }
 
     @Override

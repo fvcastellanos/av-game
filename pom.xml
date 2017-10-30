@@ -8,11 +8,11 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-   <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.5.RELEASE</version>
-    </parent>
+   <!--<parent>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-parent</artifactId>-->
+        <!--<version>1.2.5.RELEASE</version>-->
+    <!--</parent>-->
 
     <dependencies>
 
@@ -71,9 +71,9 @@
 
         <!-- Spring Boot -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>1.5.8.RELEASE</version>
+            <groupId>org.springframework.statemachine</groupId>
+            <artifactId>spring-statemachine-boot</artifactId>
+            <version>1.2.6.RELEASE</version>
         </dependency>
 
         <!-- Test Domain -->
@@ -82,13 +82,6 @@
             <groupId>org.springframework.statemachine</groupId>
             <artifactId>spring-statemachine-test</artifactId>
             <version>1.2.6.RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-            <version>1.5.8.RELEASE</version>
             <scope>test</scope>
         </dependency>
 
