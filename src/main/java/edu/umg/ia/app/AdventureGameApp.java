@@ -1,57 +1,63 @@
 package edu.umg.ia.app;
 
-import edu.umg.ia.command.CommandParser;
 import edu.umg.ia.config.AppConfig;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
 
-import java.io.IOException;
-
 import static java.lang.System.exit;
-import static java.lang.System.setErr;
 
 @Import(AppConfig.class)
-public class AdventureGameApp extends Application implements CommandLineRunner {
+@SpringBootApplication
+public class AdventureGameApp extends Application {
 
-	@Autowired
-	private CommandParser parser;
+    private Logger logger = LoggerFactory.getLogger(AdventureGameApp.class);
+
+    private ConfigurableApplicationContext context;
 
     private Stage primaryStage;
     private VBox rootLayout;
 
 	@Override
-	public void run(String... arg0) throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("hola mundo");
-		launch(arg0);
+	public void init() throws Exception {
+	    logger.info("Loading spring context");
+        SpringApplicationBuilder builder = new SpringApplicationBuilder(AdventureGameApp.class);
+        context = builder.run(getParameters().getRaw().toArray(new String[0]));
 
-//        start(primaryStage);
-	}
+        // Load root layout from fxml file.
+        logger.info("Loading Java FX context");
+        ClassLoader classLoader = getClass().getClassLoader();
+        FXMLLoader loader = new FXMLLoader(classLoader.getResource("fxml/MainForm.fxml"));
+        loader.setControllerFactory(context::getBean);
+        rootLayout = loader.load();
+
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            primaryStage = new Stage();
-            // Load root layout from fxml file.
-            ClassLoader classLoader = getClass().getClassLoader();
-            FXMLLoader loader = new FXMLLoader(classLoader.getResource("fxml/MainForm.fxml"));
-            rootLayout = loader.load();
-
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            logger.error("Can't load FX form: ", e);
             exit(2);
         }
+    }
+
+    @Override
+    public void stop() throws Exception {
+	    logger.info("closing application");
+        context.close();
     }
 
 }
