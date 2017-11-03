@@ -1,8 +1,8 @@
 package edu.umg.ia.config;
 
-import edu.umg.ia.engine.GameStateListener;
 import edu.umg.ia.engine.domain.GameEvent;
 import edu.umg.ia.engine.domain.GameState;
+import edu.umg.ia.engine.state.GameStateListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -56,10 +56,6 @@ public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<GameSt
 				.event(GameEvent.CHAPTER_I_GOAL_I_COMPLETED)
 				.and()
 			.withExternal()
-				.source(GameState.CHAPTER_ONE_GOAL_I).target(GameState.CHAPTER_ONE_GOAL_II)
-				.event(GameEvent.CHAPTER_I_GOAL_I_COMPLETED)
-				.and()
-			.withExternal()
 				.source(GameState.CHAPTER_ONE_GOAL_II).target(GameState.CHAPTER_ONE_GOAL_III)
 				.event(GameEvent.CHAPTER_I_GOAL_II_COMPLETED)
 				.and()
@@ -68,7 +64,6 @@ public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<GameSt
 				.event(GameEvent.CHAPTER_I_GOAL_III_COMPLETED)
 		//		.and()
 			;
-
     }
 
     @Bean

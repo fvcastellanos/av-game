@@ -3,11 +3,21 @@ package edu.umg.ia.engine.domain;
 import java.util.List;
 
 public class Chapter extends Sequence {
+    private int id;
     private String name;
     private String intro;
     private String epilogue;
+    private String instructions;
+    private String description;
     private List<Thing> things;
-    private List<Objective> objectives;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -33,19 +43,27 @@ public class Chapter extends Sequence {
         this.epilogue = epilogue;
     }
 
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public List<Thing> getThings() {
         return things;
     }
 
     public void setThings(List<Thing> things) {
         this.things = things;
-    }
-
-    public List<Objective> getObjectives() {
-        return objectives;
-    }
-
-    public void setObjectives(List<Objective> objectives) {
-        this.objectives = objectives;
     }
 }

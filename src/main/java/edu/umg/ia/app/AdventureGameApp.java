@@ -2,9 +2,11 @@ package edu.umg.ia.app;
 
 import edu.umg.ia.config.AppConfig;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,21 +35,22 @@ public class AdventureGameApp extends Application {
         context = builder.run(getParameters().getRaw().toArray(new String[0]));
 
         // Load root layout from fxml file.
-        logger.info("Loading Java FX context");
-        ClassLoader classLoader = getClass().getClassLoader();
-        FXMLLoader loader = new FXMLLoader(classLoader.getResource("fxml/MainForm.fxml"));
-        loader.setControllerFactory(context::getBean);
-        rootLayout = loader.load();
-
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
+            logger.info("Loading Java FX context");
+            ClassLoader classLoader = getClass().getClassLoader();
+            FXMLLoader loader = new FXMLLoader(classLoader.getResource("fxml/MainForm.fxml"));
+            loader.setControllerFactory(context::getBean);
+            rootLayout = loader.load();
+
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
+
         } catch (Exception e) {
             logger.error("Can't load FX form: ", e);
             exit(2);

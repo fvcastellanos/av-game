@@ -1,7 +1,6 @@
 package edu.umg.ia.command;
 
 import edu.umg.ia.command.domain.Command;
-import edu.umg.ia.command.domain.CommandEnum;
 import edu.umg.ia.scanner.AdventureGameLexer;
 import edu.umg.ia.scanner.AdventureGameParser;
 import org.antlr.v4.runtime.CharStreams;
@@ -9,8 +8,6 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
 
 public class CommandParser {
 

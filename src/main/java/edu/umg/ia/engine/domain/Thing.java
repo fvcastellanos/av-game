@@ -1,9 +1,12 @@
 package edu.umg.ia.engine.domain;
 
 public class Thing {
-    public String name;
-    public String description;
-    public boolean portable;
+    private int order;
+    private String name;
+    private String description;
+    private boolean portable;
+    private String action;
+    private boolean complete;
 
     public String getName() {
         return name;
@@ -27,5 +30,29 @@ public class Thing {
 
     public void setPortable(boolean portable) {
         this.portable = portable;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 }

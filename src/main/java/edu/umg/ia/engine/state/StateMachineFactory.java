@@ -1,4 +1,4 @@
-package edu.umg.ia.engine;
+package edu.umg.ia.engine.state;
 
 import java.util.EnumSet;
 

@@ -1,5 +1,7 @@
-package edu.umg.ia.engine;
+package edu.umg.ia.engine.state;
 
+import edu.umg.ia.engine.BaseITTest;
+import edu.umg.ia.engine.config.GameEngineTestConfig;
 import edu.umg.ia.engine.domain.GameEvent;
 import edu.umg.ia.engine.domain.GameState;
 import org.junit.Test;
@@ -11,9 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = GameEngineTestConfig.class)
-public class GameStateMachineIT {
+public class GameStateMachineIT extends BaseITTest {
 	
 	@Autowired
 	private StateMachine<GameState, GameEvent> stateMachine;
@@ -46,5 +46,4 @@ public class GameStateMachineIT {
         assertEquals(GameState.CHAPTER_ONE, stateMachine.getState().getId());
 
     }
-		
 }

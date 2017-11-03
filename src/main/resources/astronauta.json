@@ -1,0 +1,40 @@
+{
+  "title" : "# Ayuda a Jose a salir",
+  "intro" : "Jose se encuentra en su habitacion, tiene hambre y quiere ir salir a comer, sin embargo no encuentra su billetera",
+  "epilogue" : "Aunque aliviado James Holden ve tristemente en el cielo como todo el trabajo de su vida caia convertido en una llamarada",
+  "chapters" : [
+    {
+      "id" : 1,
+      "name" : "## Habitacion de Jose",
+      "intro" : "Jose necesita encontrar su billetera, esta debe estar en su habitacion, pero esta muy desordenada, que puede hacer?",
+      "start" : true,
+      "next" : 2,
+      "instructions" : "Jose debe encontrar su billetera, puedes observar que hay en la habitacion",
+      "description" : "Entre el desorden se puede distinguir una cama de piedra, una mesa con una gaveta y un armario",
+      "things" : [
+        {
+          "order" : 3,
+          "name" : "billetera",
+          "description" : "Billetera de cuero un poco gastado, debe ser por el uso",
+          "action" : "TAKE",
+          "portable" : true,
+          "complete" : true
+        },
+        {
+          "order" : 2,
+          "name" : "gaveta",
+          "description" : "Dentro de la gaveta se encuenta la billetera",
+          "action" : "OPEN",
+          "portable" : false
+        },
+        {
+          "order" : 1,
+          "name" : "armario",
+          "description" : "Dentro del armario solo hay ropa y una mano que te pide que te acerques...",
+          "action" : "VIEW",
+          "portable" : false
+        }
+      ]
+    }
+  ]
+}

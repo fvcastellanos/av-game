@@ -80,14 +80,4 @@ public class HistoryDao {
                 .filter(Chapter::isStart)
                 .findFirst();
     }
-
-    public Optional<Objective> getFirstObjective(Chapter chapter) {
-        if (chapter == null) {
-            return Optional.empty();
-        }
-
-        return chapter.getObjectives().stream()
-                .filter(Objective::isStart)
-                .findFirst();
-    }
 }

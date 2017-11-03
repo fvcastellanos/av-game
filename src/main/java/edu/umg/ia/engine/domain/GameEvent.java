@@ -20,7 +20,9 @@ public enum GameEvent {
 	CHAPTER_III_GOAL_III_COMPLETED,
 	
 	EPILOGUE,
-	END_GAME
+	END_GAME,
+	NONE
+
 	;
 	
 }

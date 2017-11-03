@@ -1,4 +1,4 @@
-package edu.umg.ia.engine;
+package edu.umg.ia.engine.inventory;
 
 import com.google.common.collect.Maps;
 import edu.umg.ia.engine.domain.InventoryItem;
@@ -29,7 +29,7 @@ public class ThingInventory {
 
     public String getItems() {
         StringBuilder sb = new StringBuilder();
-        sb.append("things: [");
+        sb.append("[");
         items.forEach((key, item) -> {
             sb.append(key).append(", ");
         });

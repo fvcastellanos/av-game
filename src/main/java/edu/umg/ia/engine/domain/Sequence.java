@@ -5,7 +5,7 @@ public class Sequence {
     private boolean start;
     private boolean end;
     private boolean completed;
-    private String next;
+    private int next;
 
     public boolean isStart() {
         return start;
@@ -31,11 +31,11 @@ public class Sequence {
         this.completed = completed;
     }
 
-    public String getNext() {
+    public int getNext() {
         return next;
     }
 
-    public void setNext(String next) {
+    public void setNext(int next) {
         this.next = next;
     }
 }
