@@ -6,7 +6,7 @@ public class Thing {
     private String description;
     private boolean portable;
     private String action;
-    private boolean complete;
+    private boolean completed;
 
     public String getName() {
         return name;
@@ -40,12 +40,12 @@ public class Thing {
         this.action = action;
     }
 
-    public boolean isComplete() {
-        return complete;
+    public boolean isCompleted() {
+        return completed;
     }
 
-    public void setComplete(boolean complete) {
-        this.complete = complete;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public int getOrder() {

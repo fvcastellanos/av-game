@@ -48,6 +48,7 @@ public class AdventureGameApp extends Application {
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
+            primaryStage.setTitle("Juego de Aventura de Texto - La casa de Jose");
             primaryStage.setScene(scene);
             primaryStage.show();
 

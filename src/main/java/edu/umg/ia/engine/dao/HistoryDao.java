@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import edu.umg.ia.engine.domain.Chapter;
 import edu.umg.ia.engine.domain.History;
-import edu.umg.ia.engine.domain.Objective;
 import edu.umg.ia.engine.domain.Thing;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;

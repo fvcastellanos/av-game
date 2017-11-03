@@ -8,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebView;
 import org.slf4j.Logger;
@@ -22,7 +24,6 @@ public class MainController {
 
     private GameEngine gameEngine;
 
-    @Autowired
     private HtmlParser htmlParser;
 
     @FXML
@@ -34,9 +35,10 @@ public class MainController {
     @FXML
     private WebView viewMessage;
 
-    public MainController(GameEngine gameEngine) {
+    public MainController(GameEngine gameEngine,
+                          HtmlParser htmlParser) {
         this.gameEngine = gameEngine;
-//        view = new WebView();
+        this.htmlParser = htmlParser;
     }
 
     @FXML
@@ -53,11 +55,28 @@ public class MainController {
 
             logger.info("command identified as: {}", text);
         }
+
+        edCommand.setText("");
+        edCommand.requestFocus();
     }
 
     @FXML
     public void closeApplication(ActionEvent event) {
         Platform.exit();
+    }
+
+    @FXML
+    public void keyReleased(KeyEvent event) {
+        if (event.getCode().equals(KeyCode.ENTER)) {
+            processCommand();
+        }
+    }
+
+    @FXML
+    public void iniciarEstado() {
+        htmlParser.cleanContent();
+        addMessage("");
+        gameEngine.restart();
     }
 
     private void addLog(String text) {
@@ -68,4 +87,6 @@ public class MainController {
         String content = htmlParser.getHtml(message);
         viewMessage.getEngine().loadContent(content);
     }
+
+
 }

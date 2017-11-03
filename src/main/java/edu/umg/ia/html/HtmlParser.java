@@ -35,6 +35,10 @@ public class HtmlParser {
         return proccessHtml.get();
     }
 
+    public void cleanContent() {
+        this.content = "";
+    }
+
     private String loadCss() throws Exception {
 
         if (isEmpty(css)) {

@@ -21,7 +21,8 @@ public class AppConfig {
     }
 
     @Bean
-    public MainController mainController(GameEngine gameEngine) {
-        return new MainController(gameEngine);
+    public MainController mainController(GameEngine gameEngine,
+                                         HtmlParser htmlParser) {
+        return new MainController(gameEngine, htmlParser);
     }
 }

@@ -62,10 +62,20 @@ public class GameEngine {
 
 	    if (stateMachine.getState().getId().equals(GameState.END_GAME)) {
 	        response+= "\n\n" + history.getEpilogue();
+	        gameStarted = false;
 	        stateMachine.stop();
         }
 
 	    return response;
+    }
+
+    public void restart() {
+	    if (!stateMachine.isComplete()) {
+	        stateMachine.stop();
+        }
+
+        stateMachine.start();
+	    gameStarted = false;
     }
 
     private String commandProvider(Command command) {
@@ -213,6 +223,7 @@ public class GameEngine {
             inventory.add(thing.getName(), thing);
         }
 
+        thing.setCompleted(true);
 	    return thing.getDescription() + "\n" + startNextChapter();
     }
 
@@ -237,7 +248,7 @@ public class GameEngine {
 
     private Thing getItem(String name) {
 	    return currentChapter.getThings().stream()
-                .filter(thing -> thing.getName().equals(name))
+                .filter(thing -> (thing.getName().equals(name) && !thing.isCompleted()))
                 .findFirst()
                 .get();
     }
