@@ -42,30 +42,6 @@ public class HistoryDaoTest {
     }
     
     @Test
-    public void testGettingSingleChapter() {
-    	String chapterName = "el molesto sonido de las alarmas";
-    	History history = loadHistory();
-    	
-    	Optional<Chapter> chapterHolder = historyDao.getHistoryChapter(history, chapterName);
-    	
-    	assertTrue(chapterHolder.isPresent());
-    	
-    	Chapter chapter = chapterHolder.get();
-    	assertEquals(chapter.getName(), chapterName);
-    }
-    
-    @Test
-    public void testWhenGettingThingsForExistingChapterReturnList() {
-    	String chapterName = "el molesto sonido de las alarmas";
-    	History history = loadHistory();
-    	
-    	List<Thing> things = historyDao.getThingsForChapter(history, chapterName);
-
-    	assertNotNull(things);
-    	assertFalse(things.isEmpty());    	
-    }
-    
-    @Test
     public void testWhenGettingThingsForUnexistingChapterReturnEmptyList() {
     	String chapterName = "test-chapter";
     	History history = loadHistory();

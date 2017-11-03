@@ -22,15 +22,6 @@ public class GameEngineIT extends BaseITTest {
     public void testStartGame() {
         String result = gameEngine.tell("iniciar juego");
 
-        History history = loadHistory();
-        String message = history.getTitle() + "\n\n" + history.getIntro();
-
         assertNotNull(result);
-        assertEquals(message, result);
-    }
-
-    private History loadHistory() {
-        Optional<History> historyHolder = historyDao.loadHistory("astronauta.json");
-        return historyHolder.get();
     }
 }

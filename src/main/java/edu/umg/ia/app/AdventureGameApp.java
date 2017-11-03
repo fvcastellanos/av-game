@@ -64,4 +64,7 @@ public class AdventureGameApp extends Application {
         context.close();
     }
 
+    public static void main(String [] args) {
+	    launch(args);
+    }
 }

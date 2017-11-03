@@ -6,7 +6,11 @@ import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import static org.springframework.util.StringUtils.isEmpty;
 
@@ -43,10 +47,39 @@ public class HtmlParser {
 
         if (isEmpty(css)) {
             ClassLoader classLoader = getClass().getClassLoader();
-            File file = FileUtils.getFile(classLoader.getResource("css/markdown.css").getFile());
-            css = FileUtils.readFileToString(file);
+            css = getStringFromInputStream(classLoader.getResourceAsStream("css/markdown.css"));
         }
 
         return css;
     }
+
+    private String getStringFromInputStream(InputStream is) {
+
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+        } catch (IOException e) {
+            logger.error("error: {}", e);
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+
+    }
+
 }

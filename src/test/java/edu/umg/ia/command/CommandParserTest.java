@@ -95,11 +95,11 @@ public class CommandParserTest {
     @Test
     public void testCloseItem() {
         Command result = parser.parse("cerrar ventana");
-        assertEquals(CommandEnum.OPEN, result.getCommand());
+        assertEquals(CommandEnum.CLOSE, result.getCommand());
         assertEquals("ventana", result.getItem());
 
         result = parser.parse("cerrar la gaveta");
-        assertEquals(CommandEnum.OPEN, result.getCommand());
+        assertEquals(CommandEnum.CLOSE, result.getCommand());
         assertEquals("gaveta", result.getItem());
     }
 

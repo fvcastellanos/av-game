@@ -1,60 +1,108 @@
 {
-  "title" : "El astronauta perdido",
-  "intro" : "la noche antes de su regreso a la tierra els astronauta James Holden despierta subitamente al escuchar el sonido de las alarmas de la estacion espacial",
-  "epilogue" : "aunque aliviado James Holden ve tristemente en el cielo como todo el trabajo de su vida caia convertido en una llamarada",
+  "title" : "# Ayuda a Jose a salir",
+  "intro" : "Jose se encuentra en su habitacion, tiene hambre y quiere ir salir a comer, sin embargo no encuentra su billetera",
+  "epilogue" : "### Epilogo \n Desconcertado, Jose se percata que se encuentra dentro del armario de su habitacion, detras de toda la ropa, se ve a si mismo acercandose a abrir el armario, intenta hablar, pero alguien le tapa la boca, solo puede tratar de llamar la atencion de el mismo al pedir con su mano que se acerce...",
   "chapters" : [
     {
-      "name" : "el molesto sonido de las alarmas",
-      "intro" : "Mientras se despierta, James Holden intenta entender que es lo que ha pasado",
+      "id" : 1,
+      "name" : "## Habitacion de Jose",
+      "intro" : "Jose necesita encontrar su billetera, esta debe estar en su habitacion, pero esta muy desordenada, que puede hacer?",
+      "start" : true,
+      "next" : 2,
+      "instructions" : "Jose debe encontrar su billetera, puedes observar que hay en la habitacion",
+      "description" : "Entre el desorden se puede distinguir una cama de piedra, una mesa con una gaveta y un armario",
+      "epilogue" : "Contento Jose guarda la billetera en la bolsa de su pantalon, se despide de la mano en su armario y se dirige a la sala de su casa",
       "things" : [
         {
-          "name" : "manual de operaciones",
-          "description" : "manual de operaciones de la estacion, util para cualquier emergencia",
+          "order" : 3,
+          "name" : "billetera",
+          "description" : "Billetera de cuero un poco gastado, debe ser por el uso",
+          "action" : "TAKE",
+          "portable" : true,
+          "complete" : true
+        },
+        {
+          "order" : 2,
+          "name" : "gaveta",
+          "description" : "Dentro de la gaveta se encuenta la billetera",
+          "action" : "OPEN",
+          "portable" : false
+        },
+        {
+          "order" : 1,
+          "name" : "armario",
+          "description" : "Dentro del armario solo hay ropa y una mano que te pide que te acerques...",
+          "action" : "VIEW",
+          "portable" : false
+        }
+      ]
+    },
+    {
+      "id" : 2,
+      "name" : "## En la sala",
+      "intro" : "Jose se encuentra en la sala, dispuesto a ir a comer, peero, algo le hace falta para poder salir, que sera?",
+      "start" : false,
+      "next" : 3,
+      "instructions" : "Jose debe encontrar la forma de salir de su casa, pero no debe olvidar revisar el grifo",
+      "description" : "Viendo al rededor, se pueden ver sus llaves sobre la mesa del comedor, el grifo de la cocina que gotea y su viejo abrigo",
+      "epilogue" : "Jose, ha cerrado el grifo de la cocina (el es precavido), ha tomado sus llaves y se ha puesto su abrigo, ahora si, ya casi...",
+      "things" : [
+        {
+          "order" : 1,
+          "name" : "grifo",
+          "description" : "El grifo se ha cerrado, la ultima que lo dejo abierto, la Tatuana entro por alli",
+          "action" : "CLOSE",
+          "portable" : false,
+          "complete" : false
+        },
+        {
+          "order" : 2,
+          "name" : "abrigo",
+          "description" : "Hace frio afuera, este abrigo le permite protegerse hasta de los ataques psionicos del vecino Zeratul",
+          "portable" : true,
+          "action" : "TAKE",
+          "portable" : false
+        },
+        {
+          "order" : 3,
+          "name" : "llave",
+          "description" : "Dentro de todas las llaves, solo esta interesa, porque es la que le permite salir de su casa...",
+          "action" : "TAKE",
           "portable" : true
         }
-      ],
-      "objectives" : [
+      ]
+    },
+    {
+      "id" : 3,
+      "name" : "## En la cochera de Jose",
+      "intro" : "Jose se dirige a la cochera para poder salir finalmente de su casa, solo un poco mas...",
+      "start" : false,
+      "next" : 0,
+      "instructions" : "Jose debe saltar el ultimo obstaculo",
+      "description" : "Solo la puerta se interpone entre Jose y su hambre, tiene que lograr salir!!",
+      "epilogue" : "*Finalmente Jose logra salir, pero... que es esto, es su habitacion nuevamente?*",
+      "things" : [
         {
-          "name" : "apagar las alarmas",
-          "completed" : false,
-          "description" : "el sonido de las alarmas es muy fuerte y molesto, no deja concentrarse",
-          "events" : [
-            {
-              "name" : "es necesario buscar el motivo de la alarma",
-              "clue" : "desde una terminal se podria consultar el estado de la computadora central",
-              "actions" : [
-                {
-                  "name" : "consultar terminal",
-                  "result" : "en la pantalla de la terminal se observa: | CAPSULAS: OK | OXIGENO: 45% | INCENDIO EN LABORATORIO C-41 |",
-                  "to_inventory" : false
-                }
-              ]
-            },
-            {
-              "name" : "busqueda del laboratorio c-41 ",
-              "clue" : "hay que buscar la mejor ruta para el laboratorio c-41",
-              "actions" : [
-                {
-                  "name" : "consultar manual de operaciones",
-                  "object" : "manual de operaciones",
-                  "precondition" : {
-                    "action" : "tomar el manual",
-                    "message" : "no se puede consultar el manual si aun no lo tienes"
-                  },
-                  "result" : "en la pantalla de la terminal se observa: | CAPSULAS: OK | OXIGENO: 45% | INCENDIO EN SALA 2 DETECTADO |",
-                  "to_inventory" : false
-                },
-                {
-                  "name" : "tomar el manual",
-                  "object" : "manual de operaciones",
-                  "precondition" : null,
-                  "result" : "en la pantalla de la terminal se observa: | CAPSULAS: OK | OXIGENO: 45% | INCENDIO EN SALA 2 DETECTADO |",
-                  "to_inventory" : false
-                }
-              ]
-            }
-
-          ]
+          "order" : 1,
+          "name" : "puerta",
+          "description" : "Lo siento, pero la puerta esta cerrada, si tan solo tuviera la llave...",
+          "action" : "OPEN",
+          "portable" : false,
+          "complete" : false
+        },
+        {
+          "order" : 2,
+          "name" : "llave",
+          "description" : "Puedes escuchar como se desbloquea la puerta, ahora si, ya puedes abrirla!!",
+          "action" : "USE",
+          "portable" : false
+        },
+        {
+          "order" : 3,
+          "name" : "puerta",
+          "description" : "Abriendo lentamente la puerta se puede ver como la silueta de Jose se desvanece en un gran resplandor!",
+          "action" : "OPEN",
+          "portable" : false
         }
       ]
     }
