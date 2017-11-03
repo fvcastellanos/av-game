@@ -84,8 +84,8 @@ public class CommandListener extends AdventureGameBaseListener {
     @Override
     public void exitCloseItem(AdventureGameParser.CloseItemContext ctx) {
         String item = identifierStack.pop();
-        logger.info("open item: {}", item);
-        command = CommandFactory.openItem(item);
+        logger.info("close item: {}", item);
+        command = CommandFactory.closeItem(item);
     }
 
     @Override

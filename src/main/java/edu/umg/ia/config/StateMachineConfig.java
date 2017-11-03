@@ -62,7 +62,42 @@ public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<GameSt
 			.withExternal()
 				.source(GameState.CHAPTER_ONE_GOAL_III).target(GameState.CHAPTER_TWO)
 				.event(GameEvent.CHAPTER_I_GOAL_III_COMPLETED)
-		//		.and()
+				.and()
+
+            // Chapter II
+            .withExternal()
+                .source(GameState.CHAPTER_TWO).target(GameState.CHAPTER_TWO_GOAL_I)
+                .event(GameEvent.INIT_CHAPTER_II)
+                .and()
+            .withExternal()
+                .source(GameState.CHAPTER_TWO_GOAL_I).target(GameState.CHAPTER_TWO_GOAL_II)
+                .event(GameEvent.CHAPTER_II_GOAL_I_COMPLETED)
+                .and()
+            .withExternal()
+                .source(GameState.CHAPTER_TWO_GOAL_II).target(GameState.CHAPTER_TWO_GOAL_III)
+                .event(GameEvent.CHAPTER_II_GOAL_II_COMPLETED)
+                .and()
+            .withExternal()
+                .source(GameState.CHAPTER_TWO_GOAL_III).target(GameState.CHAPTER_THREE)
+                .event(GameEvent.CHAPTER_II_GOAL_III_COMPLETED)
+        		.and()
+
+            // Chapter III
+            .withExternal()
+                .source(GameState.CHAPTER_THREE).target(GameState.CHAPTER_THREE_GOAL_I)
+                .event(GameEvent.INIT_CHAPTER_III)
+                .and()
+            .withExternal()
+                .source(GameState.CHAPTER_THREE_GOAL_I).target(GameState.CHAPTER_THREE_GOAL_II)
+                .event(GameEvent.CHAPTER_III_GOAL_I_COMPLETED)
+                .and()
+            .withExternal()
+                .source(GameState.CHAPTER_THREE_GOAL_II).target(GameState.CHAPTER_THREE_GOAL_III)
+                .event(GameEvent.CHAPTER_III_GOAL_II_COMPLETED)
+                .and()
+            .withExternal()
+                .source(GameState.CHAPTER_THREE_GOAL_III).target(GameState.END_GAME)
+                .event(GameEvent.CHAPTER_III_GOAL_III_COMPLETED)
 			;
     }
 

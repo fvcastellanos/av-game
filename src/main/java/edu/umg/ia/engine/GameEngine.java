@@ -58,7 +58,14 @@ public class GameEngine {
 	        return error("Lo siento, no entiendo lo que dices...");
         }
 
-	    return commandProvider(command);
+        String response = commandProvider(command);
+
+	    if (stateMachine.getState().getId().equals(GameState.END_GAME)) {
+	        response+= "\n\n" + history.getEpilogue();
+	        stateMachine.stop();
+        }
+
+	    return response;
     }
 
     private String commandProvider(Command command) {
@@ -125,11 +132,23 @@ public class GameEngine {
     }
 
     private String startChapterII() {
-	    return "";
+	    stateMachine.sendEvent(GameEvent.INIT_CHAPTER_II);
+	    currentChapter = getChapter(currentChapter.getNext());
+
+        // Move to the first goal
+        stateMachine.sendEvent(GameEvent.INIT_CHAPTER_II);
+
+        return currentChapter.getName() + "\n" + currentChapter.getIntro();
     }
 
     private String startChapterIII() {
-	    return "";
+        stateMachine.sendEvent(GameEvent.INIT_CHAPTER_III);
+        currentChapter = getChapter(currentChapter.getNext());
+
+        // Move to the first goal
+        stateMachine.sendEvent(GameEvent.INIT_CHAPTER_III);
+
+        return currentChapter.getName() + "\n" + currentChapter.getIntro();
     }
 
     private String whereAmI() {
@@ -170,6 +189,18 @@ public class GameEngine {
             return error("No puedo hacer eso en este momento...");
         }
 
+        if (CommandEnum.USE.equals(command.getCommand())) {
+            if (!itemIsPresent(command.getToItem())) {
+                logger.error("can't use item: {} over a non existing item: {}", command.getItem(), command.getToItem());
+                return error("No puedo usar ese item");
+            }
+
+            if (inventory.get(thing.getName()) == null) {
+                logger.error("the item: {} is not in the inventory", thing.getName());
+                return error("El item que se quiere usar no se encuentra en el inventario");
+            }
+        }
+
         boolean accepted = stateMachine.sendEvent(getNextEvent(thing.getOrder()));
 
         if (!accepted) {
@@ -182,7 +213,21 @@ public class GameEngine {
             inventory.add(thing.getName(), thing);
         }
 
-	    return thing.getDescription();
+	    return thing.getDescription() + "\n" + startNextChapter();
+    }
+
+    private String startNextChapter() {
+        GameState state = stateMachine.getState().getId();
+        String epilogue = "\n" + currentChapter.getEpilogue();
+        switch (state) {
+            case CHAPTER_TWO:
+                return epilogue + "\n" + startChapterII();
+
+            case CHAPTER_THREE:
+                return epilogue + "\n" + startChapterIII();
+        }
+
+        return "\n";
     }
 
     private boolean itemIsPresent(String name) {
@@ -230,5 +275,11 @@ public class GameEngine {
         }
 
         return GameEvent.NONE;
+    }
+
+    private Chapter getChapter(int id) {
+	    return history.getChapters().stream()
+                .filter(chapter -> (chapter.getId() == id))
+                .findFirst().get();
     }
 }
