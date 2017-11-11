@@ -43,6 +43,22 @@ public class HtmlParser {
         this.content = "";
     }
 
+    public String getHtmlFromMarkdownFile(String fileName) {
+        return getHtml(loadMarkdownFile(fileName));
+    }
+
+    private String loadMarkdownFile(String fileName) {
+        try {
+            ClassLoader classLoader = getClass().getClassLoader();
+            String markdown = getStringFromInputStream(classLoader.getResourceAsStream(fileName));
+
+            return markdown;
+
+        } catch (Exception ex) {
+            return "*No se pudo cargar el archivo*";
+        }
+    }
+
     private String loadCss() throws Exception {
 
         if (isEmpty(css)) {

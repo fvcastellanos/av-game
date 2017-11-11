@@ -2,19 +2,22 @@ package edu.umg.ia.controller;
 
 import edu.umg.ia.engine.GameEngine;
 import edu.umg.ia.html.HtmlParser;
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.IOException;
 
 import static org.springframework.util.StringUtils.isEmpty;
 
@@ -79,6 +82,11 @@ public class MainController {
         gameEngine.restart();
     }
 
+    @FXML
+    public void openInstructionsForm() {
+        openForm("fxml/Instructions.fxml");
+    }
+
     private void addLog(String text) {
         edLog.appendText(text + "\n");
     }
@@ -88,5 +96,17 @@ public class MainController {
         viewMessage.getEngine().loadContent(content);
     }
 
-
+    private void openForm(String name) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource(name));
+            Stage stage = new Stage();
+            stage.setTitle("Game Instructions");
+            stage.setScene(new Scene(root, 450, 450));
+            stage.show();
+        }
+        catch (IOException ex) {
+            logger.error("No se pueden cargar las instrucciones ", ex);
+        }
+    }
 }
