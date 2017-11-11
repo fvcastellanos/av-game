@@ -84,7 +84,7 @@ public class MainController {
 
     @FXML
     public void openInstructionsForm() {
-        openForm("fxml/Instructions.fxml");
+        openForm("fxml/Instructions.fxml", "Instrucciones del Juego");
     }
 
     private void addLog(String text) {
@@ -96,13 +96,14 @@ public class MainController {
         viewMessage.getEngine().loadContent(content);
     }
 
-    private void openForm(String name) {
+    private void openForm(String name, String windowTitle) {
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getClassLoader().getResource(name));
             Stage stage = new Stage();
-            stage.setTitle("Game Instructions");
+            stage.setTitle(windowTitle);
             stage.setScene(new Scene(root, 450, 450));
+
             stage.show();
         }
         catch (IOException ex) {
