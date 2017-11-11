@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.web.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.web.WebView?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="575.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.umg.ia.controller.InstructionController">
    <children>
-      <AnchorPane>
-         <children>
-            <BorderPane prefHeight="400.0" prefWidth="598.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
-               <center>
-                  <WebView fx:id="webView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-               </center>
-               <bottom>
-                  <Pane prefHeight="69.0" prefWidth="598.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button fx:id="btnCerrar" layoutX="26.0" layoutY="21.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" text="Cerrar" />
-                     </children>
-                  </Pane>
-               </bottom>
-            </BorderPane>
-         </children>
-      </AnchorPane>
+      <BorderPane prefHeight="400.0" prefWidth="598.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+         <center>
+            <WebView fx:id="webView" prefHeight="410.0" prefWidth="802.0" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Pane prefHeight="65.0" prefWidth="802.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnCargar" layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadInstructions" prefHeight="31.0" prefWidth="118.0" text="Cargar" />
+               </children>
+            </Pane>
+         </bottom>
+      </BorderPane>
    </children>
-</VBox>
+</AnchorPane>
